@@ -328,3 +328,33 @@ str(e)</br>
 e</summary>
   <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar15.jpg"></td></tr></table>
 </details>
+<details>
+  <summary><b>Tugas Praktik</b></br># Ketik perintah berikut ini untuk membaca help tentang matriks</br>
+?matrix</br>
+# Buatlah matriks 3 x 3 dan simpan dengan nama matriks A.</br>
+A <- matrix(c(1, 1, 0, 0, -2, 1, 0, 0, 3), nrow = 3, ncol = 3, byrow = TRUE)</br>
+# Tuliskan perintah untuk menampilkan matriks A</br>
+A</br>
+# Tuliskan perintah R untuk menghitung nilai eigen dan vektor eigen</br>
+# dan simpanlah hasilnya dalam variable ev</br>
+ev <- eigen(A)</br>
+# Tuliskan perintah untuk melihat struktur obyek eigen</br>
+str(ev)</br>
+# Tuliskan perintah untuk melihat hasil output</br>
+ev</br>
+# Tuliskan perintah untuk mengakses nilai eigen</br>
+ev$values</br>
+# Tuliskan perintah untuk mengakses vektor eigen</br>
+ev$vectors</summary>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar16.jpg"></td></tr></table>
+</details>
+
+<p align="justify"><b>Kesimpulan</b></br>
+Anda telah mempelajari Principal Component Analysis sebagai salah satu teknik reduksi dimensi. PCA mengurangi dimensi dengan membentuk “variabel-variabel” baru yang menjelaskan sebagian besar variabilitas data. Dengan demikian visualisasi data maupun penjelasan model akan lebih mudah dilakukan.</br></p>
+Langkah-langkah reduksi dimensi dengan PCA yang sudah dilakukan adalah : <ol>
+<li>Melakukan standarisasi data</li>
+<li>Menghitung matrik korelasi</li>
+<li>Menghitung nilai eigen dan vektor eigen</li>
+<li>Memilih banyaknya principal component dengan Screeplot dan kriterion Kaiser</li>
+<li>Visualisasi output</li></ol>
+Langkah 1 sampai dengan 3 dapat secara otomatis dilakukan oleh R.

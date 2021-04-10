@@ -27,7 +27,7 @@ Deskripsi : <ol>
 <li>Output x menampilkan skor data pada “sistem koordinat baru”.</li></ol>
 
 <details>
-  <summary><b>Contoh / Langkah 1: Standarisasi Data</b></br>library(openxlsx)
+  <summary><b>1: Standarisasi Data</b></br>library(openxlsx)
 df <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet="3varb")</br>
 df <- scale(df, center = TRUE, scale = TRUE)</br>
 head(df, 3)</summary>
@@ -35,7 +35,7 @@ head(df, 3)</summary>
 </details>
 
 <details>
-  <summary>Langkah 2: Menghitung Matrik Korelasi Data</br>library(openxlsx)</br>
+  <summary><b>2: Menghitung Matrik Korelasi Data</b></br>library(openxlsx)</br>
 df <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet="3varb")</br>
 df <- scale(df, center = TRUE, scale = TRUE)</br>
 cormat <- cor(df)</br>
@@ -43,7 +43,7 @@ cormat</summary>
   <table border="0"><tr><td> <img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar2.jpg"> </td></tr></table>
 </details>
 <details>
-  <summary><b>Langkah 3: Menghitung Nilai Eigen dan Vektor Eigen</b></br>library(openxlsx)</br>
+  <summary><b>3: Menghitung Nilai Eigen dan Vektor Eigen</b></br>library(openxlsx)</br>
 df <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet="3varb")</br>
 df <- scale(df, center = TRUE, scale = TRUE)</br>
 cormat <- cor(df)</br>

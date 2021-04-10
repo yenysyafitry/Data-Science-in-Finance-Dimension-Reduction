@@ -321,3 +321,10 @@ library(factoextra)</br>
 fviz_pca_ind(pr.out, label="none", habillage=cslarge_train$riskrating)</summary>
   <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar14.png"></td></tr></table>
 </details>
+<details>
+  <summary>Hitung nilai eigen dan cari vektor eigen dari matriks</br>(A <- as.matrix(data.frame(c(1,0,1),c(0,1,1),c(1,1,0))))</br>
+e <- eigen(A)</br>
+str(e)</br>
+e</summary>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar15.jpg"></td></tr></table>
+</details>

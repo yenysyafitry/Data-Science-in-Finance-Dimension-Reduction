@@ -209,3 +209,115 @@ abline(h = 1, lty = 3, col = "red")</br>
 biplot(pr.out, scale = 0) #draw first 2 principal components</summary>
   <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar11.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar12.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar13.png"></td></tr></table>
 </details>
+<details>
+  <summary><b>Tugas Praktik: 8 Variabel</b></br>#Panggil library openxlsx untuk membaca file data Excel</br>
+library(openxlsx)</br>
+
+#Baca data pada sheet "cslarge" dalam file "https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx"</br>
+#dan simpan data dengan nama "cslarge_raw"</br>
+cslarge_raw <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet = "cslarge")</br>
+
+#Tampilkan struktur data</br>
+str(cslarge_raw)</br>
+
+#Tampilkan beberapa baris observasi dengan fungsi head()</br>
+head(cslarge_raw)</br>
+
+#Tampilkan statistika deskriptif untuk semua variabel dalam data frame.</br>
+summary(cslarge_raw)</br>
+
+#Gambarkan distribusi income berdasarkan dependents.</br>
+library(ggplot2)</br>
+ggplot(cslarge_raw, aes(as.factor(dependents), income)) +
+geom_boxplot() + xlab("Dependents") + ggtitle("Boxplot Income Berdasarkan Dependents")</br>
+
+#Gambarkan distribusi debt berdasarkan dependents.</br>
+ggplot(cslarge_raw, aes(as.factor(dependents), debt)) +</br>
+geom_boxplot() + xlab("Dependents") + ggtitle("Boxplot Debt Berdasarkan Dependents")</br>
+
+#Pisahkan data untuk traning set dan testing set</br>
+#untuk tiap-tiap risk rating</br>
+
+#Catat indeks/ nomor baris untuk tiap-tiap risk rating</br>
+index1 <- which(cslarge_raw$riskrating == 1)</br>
+index2 <- which(cslarge_raw$riskrating == 2)</br>
+
+#Lakukan pencatatan indeks untuk risk rating berikutnya</br>
+index3 <- which(cslarge_raw$riskrating == 3)</br>
+index4 <- which(cslarge_raw$riskrating == 4)</br>
+index5 <- which(cslarge_raw$riskrating == 5)</br>
+
+#80% data akan digunakan sebagai traning set.</br>
+ntrain1 <- round(0.8 * length(index1))</br>
+ntrain2 <- round(0.8 * length(index2))</br>
+ntrain3 <- round(0.8 * length(index3))</br>
+ntrain4 <- round(0.8 * length(index4))</br>
+ntrain5 <- round(0.8 * length(index5))</br>
+
+#set seed agar sampling ini bisa direproduksi</br>
+set.seed(100)</br>
+
+#sampling data masing-masing rating untuk training set</br>
+train1_index <- sample(index1, ntrain1)</br>
+train2_index <- sample(index2, ntrain2)</br>
+train3_index <- sample(index3, ntrain3)</br>
+train4_index <- sample(index4, ntrain4)</br>
+train5_index <- sample(index5, ntrain5)</br>
+
+#menyimpan data ke dalam testing set</br>
+test1_index <- setdiff(index1, train1_index)</br>
+test2_index <- setdiff(index2, train2_index)</br>
+test3_index <- setdiff(index3, train3_index)</br>
+test4_index <- setdiff(index4, train4_index)</br>
+test5_index <- setdiff(index5, train5_index)</br>
+
+#Menggabungkan hasil sampling masing-masing risk rating ke dalam training set</br>
+cslarge_train <- do.call("rbind", list(cslarge_raw[train1_index,],</br>
+cslarge_raw[train2_index,], cslarge_raw[train3_index,],</br>
+cslarge_raw[train4_index,], cslarge_raw[train5_index,]))</br>
+cstrain <- subset(cslarge_train, select = -c(contractcode,riskrating))</br>
+
+#Menggabungkan hasil sampling masing-masing risk rating ke dalam testing set</br>
+cslarge_test <- do.call("rbind", list(cslarge_raw[test1_index,],</br>
+cslarge_raw[test2_index,], cslarge_raw[test3_index,],</br>
+cslarge_raw[test4_index,], cslarge_raw[test5_index,]))</br>
+cstest <- subset(cslarge_test, select = -c(contractcode,riskrating))</br>
+
+#Menghitung korelasi antar variabel</br>
+cor(cstrain)</br>
+#Menggambarkan matrik korelasi dengan ggcorrplot</br>
+library(ggcorrplot)</br>
+ggcorrplot(cor(cstrain))</br>
+
+
+#Lakukan analisa PCA dengan fungsi prcomp() dan</br>
+#simpan output ke dalam obyek dengan nama pr.out</br>
+pr.out <- prcomp(cstrain, scale = TRUE, center = TRUE)</br>
+
+#Tampilkan output PCA dengan memanggil obyek pr.out</br>
+pr.out</br>
+
+#Tampilkan summary dari output PCA</br>
+summary(pr.out)</br>
+
+#Gambarkan scree plot dengan menggunakan fungsi screeplot()</br>
+screeplot(pr.out, type = "line", ylim = c(0,2))</br>
+
+#Tambahkan garis horizontal sebagai panduan untuk menggunakan </br>kriteria Kaiser</br>
+abline(h = 1, lty = 3, col = "red")</br>
+
+#Gambarkan biplot dengan menggunakan fungsi biplot()</br>
+biplot(pr.out, scale = 0) #draw first 2 principal components</br>
+
+#Gambarkan Principal Component dan risk rating dengan menggunakan</br>
+#fungsi autoplot() dari package ggfortify.</br>
+library(ggfortify)</br>
+autoplot(pr.out, data = cslarge_train, colour = 'riskrating',</br>
+loadings = TRUE, loadings.label = TRUE, loadings.label.size = 3, scale = 0)</br>
+
+#Gambarkan Principal Component dan risk rating dengan menggunakan</br>
+#fungsi fviz_pca_ind() package factoextra.</br>
+library(factoextra)</br>
+fviz_pca_ind(pr.out, label="none", habillage=cslarge_train$riskrating)</summary>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar14.png"></td></tr></table>
+</details>

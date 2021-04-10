@@ -87,3 +87,30 @@ df_new <- df %*% pr.out$rotation</br>
 df_new[1:6,1:2]</summary>
   <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar8.jpg"></td></tr></table>
 </details>
+<details>
+  <summary><b>Ketikkan perintah berikut ini pada console untuk mereplikasi contoh pembahasan yang telah dilakukan.</b></br>#Panggil library openxlsx untuk membaca file data Excel</br>
+library(openxlsx)</br>
+#Baca data pada sheet "3varb" dalam file https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx</br>
+#dan simpan data dengan nama df_raw</br>
+df_raw <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet = "3varb")</br>
+#Tampilkan struktur data</br>
+str(df_raw)</br>
+#Tampilkan beberapa baris observasi dengan fungsi head()</br>
+head(df_raw)</br>
+#Lakukan analisa PCA dengan fungsi prcomp()</br>
+#simpan output dengan nama pr.out</br>
+pr.out <- prcomp(df_raw, center = TRUE, scale = TRUE, retx = TRUE)</br>
+#Tampilkan komponen output fungsi prcomp()</br>
+names(pr.out)</br>
+#Tampilkan output PCA</br>
+pr.out</br>
+#Tampilkan summary dari output PCA</br>
+summary(pr.out)</br>
+#Gambarkan scree plot</br>
+#Tambahkan garis horizontal sebagai panduan untuk menggunakan kriteria Kaiser</br>
+screeplot(pr.out, type = "line")</br>
+abline(h = 1, col = "red", lty = 3)
+#Gambarkan biplot dengan menggunakan fungsi biplot()</br>
+biplot(pr.out, scale = 0)</summary></br>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar9.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar10.png"></td></tr></table>
+</details>

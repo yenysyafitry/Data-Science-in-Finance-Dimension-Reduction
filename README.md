@@ -75,5 +75,15 @@ df <- scale(df, center = TRUE, scale = TRUE)</br>
 pr.out <- prcomp(df, scale. = TRUE, center = TRUE)</br>
 pr.out$rotation</br>
 biplot(pr.out, scale = 0)</summary>
-  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar6.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar7.png"></td></tr></table>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar6.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar7.jpg"></td></tr></table>
+</details>
+<details>
+  <summary><b>6: Menghitung Skor Baru</b></br>library(openxlsx)</br>
+df <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet="3varb")</br>
+df <- scale(df, center = TRUE, scale = TRUE)</br>
+pr.out <- prcomp(df, scale. = TRUE, center = TRUE)</br>
+head(df)</br>
+df_new <- df %*% pr.out$rotation</br>
+df_new[1:6,1:2]</summary>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar8.jpg"></td></tr></table>
 </details>

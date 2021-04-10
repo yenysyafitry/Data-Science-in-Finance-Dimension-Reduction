@@ -31,7 +31,7 @@ Deskripsi : <ol>
 df <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet="3varb")</br>
 df <- scale(df, center = TRUE, scale = TRUE)</br>
 head(df, 3)</summary>
-  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar1.jpg"</td></tr></table>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar1.jpg"></td></tr></table>
 </details>
 
 <details>
@@ -40,5 +40,5 @@ df <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet="3v
 df <- scale(df, center = TRUE, scale = TRUE)</br>
 cormat <- cor(df)</br>
 cormat</summary>
-  <table border="0"><tr><td><i>Output :</i></td><td>> isi.vector <- c(1, 2, 3, NA, 5, NULL, 7)</br>> length(isi.vector)</br>[1] 6</td></tr></table>
+  <table border="0"><tr><td> <img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar2.jpg"> </td></tr></table>
 </details>

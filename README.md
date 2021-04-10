@@ -114,3 +114,98 @@ abline(h = 1, col = "red", lty = 3)
 biplot(pr.out, scale = 0)</summary></br>
   <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar9.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar10.png"></td></tr></table>
 </details>
+<details>
+  <summary><b>Tugas Praktik</b></br>#Panggil library openxlsx untuk membaca file data Excel
+#[1]
+library(openxlsx)</br>
+#Baca data pada sheet "csdata" dalam file "https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx"</br>
+#dan simpan data dengan nama "csdat_raw"</br>
+#[2]</br>
+csdat_raw <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet = "csdata")</br>
+#Tampilkan struktur data</br>
+#[3]</br>
+str(csdat_raw)
+
+#Tampilkan beberapa baris observasi dengan fungsi head()
+#[4]
+head(csdat_raw)</br>
+#Tampilkan statistika deskriptif untuk semua variabel dalam data.</br>
+#[5]</br>
+summary(csdat_raw)</br>
+#Gambarkan distribusi Income berdasarkan Dependents</br>
+library(ggplot2)</br>
+ggplot(csdat_raw, aes(as.factor(dependents), income)) +
+geom_boxplot() + xlab("Dependents") + ggtitle("Boxplot Income Berdasarkan Dependents")</br>
+
+#Pisahkan data untuk traning set dan testing set</br>
+#untuk tiap-tiap risk rating</br>
+
+#Catat indeks/ nomor baris untuk tiap-tiap risk rating</br>
+index1 <- which(csdat_raw$riskrating == 1)</br>
+index2 <- which(csdat_raw$riskrating == 2)</br>
+
+#Lakukan pencatatan indeks untuk risk rating berikutnya</br>
+#[6]</br>
+index3 <- which(csdat_raw$riskrating == 3)</br>
+index4 <- which(csdat_raw$riskrating == 4)</br>
+index5 <- which(csdat_raw$riskrating == 5)</br>
+
+#80% data akan digunakan sebagai traning set.</br>
+#[7]</br>
+ntrain1 <- round(0.8 * length(index1))</br>
+ntrain2 <- round(0.8 * length(index2))</br>
+ntrain3 <- round(0.8 * length(index3))</br>
+ntrain4 <- round(0.8 * length(index4))</br>
+ntrain5 <- round(0.8 * length(index5))</br>
+#set seed agar sampling ini bisa direproduksi</br>
+set.seed(100)</br>
+#sampling data masing-masing rating untuk training set</br>
+#[8]</br>
+train1_index <- sample(index1, ntrain1)</br>
+train2_index <- sample(index2, ntrain2)</br>
+train3_index <- sample(index3, ntrain3)</br>
+train4_index <- sample(index4, ntrain4)</br>
+train5_index <- sample(index5, ntrain5)</br>
+
+#menyimpan data ke dalam testing set</br>
+#[9]</br>
+test1_index <- setdiff(index1, train1_index)</br>
+test2_index <- setdiff(index2, train2_index)</br>
+test3_index <- setdiff(index3, train3_index)</br>
+test4_index <- setdiff(index4, train4_index)</br>
+test5_index <- setdiff(index5, train5_index)</br>
+
+#Menggabungkan hasil sampling masing-masing risk rating ke dalam training set</br>
+csdattrain <- do.call("rbind", list(csdat_raw[train1_index,],</br>
+csdat_raw[train2_index,], csdat_raw[train3_index,],</br>
+csdat_raw[train4_index,], csdat_raw[train5_index,]))</br>
+cstrain <- subset(csdattrain, select =-c(contractcode,riskrating))</br>
+
+#Menggabungkan hasil sampling masing-masing risk rating ke dalam testing set</br>
+csdattest <- do.call("rbind", list(csdat_raw[test1_index,],</br>
+csdat_raw[test2_index,], csdat_raw[test3_index,],</br>
+csdat_raw[test4_index,], csdat_raw[test5_index,])) #[10]</br>
+cstest <- subset(csdattest, select = -c(contractcode,riskrating)) #[11]</br>
+#Menghitung korelasi antar variabel</br>
+cor(cstrain)</br>
+#Lakukan analisa PCA dengan fungsi prcomp() dan</br>
+#simpan output ke dalam obyek dengan nama pr.out</br>
+#[12]</br>
+pr.out <- prcomp(cstrain, scale = TRUE, center = TRUE)</br>
+
+#Tampilkan output PCA dengan memanggil obyek pr.out</br>
+#[13]</br>
+pr.out</br>
+#Tampilkan summary dari output PCA</br>
+#[14]</br>
+summary(pr.out)</br>
+#Gambarkan scree plot dengan menggunakan fungsi screeplot()</br>
+#[15]</br>
+screeplot(pr.out, type = "line", ylim = c(0,2))</br>
+#Tambahkan garis horizontal sebagai panduan untuk menggunakan kriteria Kaiser</br>
+abline(h = 1, lty = 3, col = "red")</br>
+#Gambarkan biplot dengan menggunakan fungsi biplot()</br>
+#[16]</br>
+biplot(pr.out, scale = 0) #draw first 2 principal components</summary>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar11.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar12.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar13.png"></td></tr></table>
+</details>

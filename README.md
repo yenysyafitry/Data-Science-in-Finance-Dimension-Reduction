@@ -68,3 +68,12 @@ screeplot(pr.out, type = "line")</br>
 abline(h = 1, lty = 3, col = "red")</summary>
   <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar4.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar5.png"></td></tr></table>
 </details>
+<details>
+  <summary><b>5: Visualisasi dengan Biplot</b></br>library(openxlsx)</br>
+df <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet="3varb")</br>
+df <- scale(df, center = TRUE, scale = TRUE)</br>
+pr.out <- prcomp(df, scale. = TRUE, center = TRUE)</br>
+pr.out$rotation</br>
+biplot(pr.out, scale = 0)</summary>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar6.png"></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar7.png"></td></tr></table>
+</details>

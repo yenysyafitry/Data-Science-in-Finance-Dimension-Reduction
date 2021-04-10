@@ -42,3 +42,12 @@ cormat <- cor(df)</br>
 cormat</summary>
   <table border="0"><tr><td> <img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar2.jpg"> </td></tr></table>
 </details>
+<details>
+  <summary><b>Langkah 3: Menghitung Nilai Eigen dan Vektor Eigen</b></br>library(openxlsx)</br>
+df <- read.xlsx("https://academy.dqlab.id/dataset/dqlab_pcadata.xlsx", sheet="3varb")</br>
+df <- scale(df, center = TRUE, scale = TRUE)</br>
+cormat <- cor(df)</br>
+eig <- eigen(cormat)</br>
+eig</summary>
+  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar3.jpg"></td></tr></table>
+</details>

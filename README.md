@@ -328,25 +328,29 @@ str(e)</br>
 e</summary>
   <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar15.jpg"></td></tr></table>
 </details>
-<details>
-  <summary><b>Tugas Praktik</b></br># Ketik perintah berikut ini untuk membaca help tentang matriks</br>
-?matrix</br>
-# Buatlah matriks 3 x 3 dan simpan dengan nama matriks A.</br>
-A <- matrix(c(1, 1, 0, 0, -2, 1, 0, 0, 3), nrow = 3, ncol = 3, byrow = TRUE)</br>
-# Tuliskan perintah untuk menampilkan matriks A</br>
-A</br>
-# Tuliskan perintah R untuk menghitung nilai eigen dan vektor eigen</br>
-# dan simpanlah hasilnya dalam variable ev</br>
-ev <- eigen(A)</br>
-# Tuliskan perintah untuk melihat struktur obyek eigen</br>
-str(ev)</br>
-# Tuliskan perintah untuk melihat hasil output</br>
-ev</br>
-# Tuliskan perintah untuk mengakses nilai eigen</br>
-ev$values</br>
-# Tuliskan perintah untuk mengakses vektor eigen</br>
-ev$vectors</summary>
-</details>
+
+
+  <p><b>Tugas Praktik</b></p>
+  
+  ```{r}
+# Ketik perintah berikut ini untuk membaca help tentang matriks
+?matrix
+# Buatlah matriks 3 x 3 dan simpan dengan nama matriks A.
+A <- matrix(c(1, 1, 0, 0, -2, 1, 0, 0, 3), nrow = 3, ncol = 3, byrow = TRUE)
+# Tuliskan perintah untuk menampilkan matriks A
+A
+# Tuliskan perintah R untuk menghitung nilai eigen dan vektor eigen
+# dan simpanlah hasilnya dalam variable ev
+ev <- eigen(A)
+# Tuliskan perintah untuk melihat struktur obyek eigen
+str(ev)
+# Tuliskan perintah untuk melihat hasil output
+ev
+# Tuliskan perintah untuk mengakses nilai eigen
+ev$values
+# Tuliskan perintah untuk mengakses vektor eigen
+ev$vectors
+```
 
 <p align="justify"><b>Kesimpulan</b></br>
 Anda telah mempelajari Principal Component Analysis sebagai salah satu teknik reduksi dimensi. PCA mengurangi dimensi dengan membentuk “variabel-variabel” baru yang menjelaskan sebagian besar variabilitas data. Dengan demikian visualisasi data maupun penjelasan model akan lebih mudah dilakukan.</br></p>

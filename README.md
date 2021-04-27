@@ -346,7 +346,6 @@ ev</br>
 ev$values</br>
 # Tuliskan perintah untuk mengakses vektor eigen</br>
 ev$vectors</summary>
-  <table border="0"><tr><td><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/gambar16.jpg"></td></tr></table>
 </details>
 
 <p align="justify"><b>Kesimpulan</b></br>
@@ -358,3 +357,6 @@ Langkah-langkah reduksi dimensi dengan PCA yang sudah dilakukan adalah : <ol>
 <li>Memilih banyaknya principal component dengan Screeplot dan kriterion Kaiser</li>
 <li>Visualisasi output</li></ol>
 Langkah 1 sampai dengan 3 dapat secara otomatis dilakukan oleh R.
+
+</br></br></br>
+<p align="center"><b>E-Sertifikat </b></br><img src="https://github.com/yenysyafitry/Data-Science-in-Finance-Dimension-Reduction/blob/main/e-sertifikat.jpg"></p>
